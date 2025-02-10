@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       "play-lh.googleusercontent.com",
     ],
   },
+  output: "export", // aded this line to export out folder
 };
 
 export default nextConfig;

@@ -2,19 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true, // Move this inside images
     domains: [
-      "https://img.icons8.com",
-      "https://via.placeholder.com",
-      "via.placeholder.com",
-      "https://img.icons8.com",
-      "img.icons8.com",
       "img.icons8.com",
       "via.placeholder.com",
-      "https://play-lh.googleusercontent.com",
       "play-lh.googleusercontent.com",
     ],
   },
-  output: "export", // aded this line to export out folder
+  output: "export", // This allows static export
 };
 
 export default nextConfig;

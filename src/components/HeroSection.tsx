@@ -40,7 +40,7 @@ const HeroSection = () => {
                 <AppStoreButton
                   platform="android"
                   imageUrl="https://img.icons8.com/color/48/google-play.png"
-                  routeUrl="https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender&hl=en"
+                  routeUrl="https://play.google.com/store/apps/details?id=com.kharagedition.tambola&hl=en"
                 />
               </AnimatedWrapper>
             </div>

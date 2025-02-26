@@ -25,7 +25,7 @@ const DownloadSection = () => {
                     className="cursor-pointer hover:scale-105 transition-transform"
                   />
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender&hl=en">
+                <a href="https://play.google.com/store/apps/details?id=com.kharagedition.tambola&hl=en">
                   <Image
                     src="https://img.icons8.com/color/48/google-play.png"
                     alt="Play Store"

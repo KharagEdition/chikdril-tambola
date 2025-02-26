@@ -1,6 +1,35 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
+import { auth } from "../lib/firebase"; // Import your Firebase auth directly
 
 const Header = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Use the imported auth instance directly
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
     <header className="fixed w-full z-50 bg-black/30 backdrop-blur-md">
       <nav className="container mx-auto px-6 py-4">
@@ -28,11 +57,36 @@ const Header = () => {
               About
             </Link>
           </div>
-          <a href="https://apps.apple.com/us/app/tibetan-calendar-app/id6741181925?platform=iphone">
-            <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform">
-              Play Now
-            </button>
-          </a>
+          <div className="flex items-center gap-4">
+            {loading ? (
+              <div className="h-10 w-24 bg-gray-700/50 animate-pulse rounded-full"></div>
+            ) : user ? (
+              <div className="flex items-center gap-4">
+                <Link href="/dashboard">
+                  <button className="bg-indigo-600 px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors">
+                    Dashboard
+                  </button>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link href="/login">
+                <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform">
+                  Login
+                </button>
+              </Link>
+            )}
+            <a href="https://apps.apple.com/us/app/tibetan-calendar-app/id6741181925?platform=iphone">
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform">
+                Play Now
+              </button>
+            </a>
+          </div>
         </div>
       </nav>
     </header>

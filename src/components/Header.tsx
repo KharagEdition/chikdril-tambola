@@ -76,7 +76,7 @@ const Header = () => {
               </div>
             ) : (
               <Link href="/login">
-                <button className=" bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform hidden">
+                <button className=" bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full hover:scale-105 transition-transform">
                   Login
                 </button>
               </Link>

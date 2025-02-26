@@ -94,11 +94,11 @@ export class GameModel {
       winnersByType: this.winnersByType,
       playerStrikes: this.playerStrikes,
       playerTicketCount: this.playerTicketCount,
-      ticketCount: this.ticketCount,
-      ticketPrice: this.ticketPrice,
+      ticketCount: Number(this.ticketCount),
+      ticketPrice: Number(this.ticketPrice),
       ticketCurrency: this.ticketCurrency,
       startTime: Timestamp.fromDate(this.startTime),
-      ticketLimit: this.ticketLimit,
+      ticketLimit: Number(this.ticketLimit),
       prizeDistribution: this.prizeDistribution.toJson(),
     };
   }
@@ -133,7 +133,7 @@ export class GameModel {
       description: "Play Tambola and win exciting prizes",
       status: GameStatus.waiting,
       calledNumbers: [],
-      players: [hostId],
+      players: [],
       winners: [],
       createdAt: new Date(),
       winnersByType: {

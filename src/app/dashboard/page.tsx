@@ -10,6 +10,8 @@ import {
   orderBy,
   getDocs,
   addDoc,
+  doc,
+  setDoc,
 } from "firebase/firestore";
 import Link from "next/link";
 import ProtectedRoute from "../../components/ProtectedRoute";
@@ -160,7 +162,8 @@ function Dashboard() {
         formData.prizeDistribution.earlyFivePrizePercentage;
 
       const gamesCollection = collection(db, "games");
-      await addDoc(gamesCollection, newGame.toJson());
+      const gameDoc = doc(gamesCollection, newGame.id);
+      await setDoc(gameDoc, newGame.toJson());
 
       // Refresh the games list
       fetchGames();

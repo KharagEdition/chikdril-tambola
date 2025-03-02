@@ -9,7 +9,6 @@ import {
   where,
   orderBy,
   getDocs,
-  addDoc,
   doc,
   setDoc,
 } from "firebase/firestore";

@@ -127,7 +127,7 @@ export class GameModel {
   }
   static create(hostId: string): GameModel {
     return new GameModel({
-      id: Date.now().toString(),
+      id: `CT${Date.now()}`,
       hostId,
       name: "Tambola",
       description: "Play Tambola and win exciting prizes",
